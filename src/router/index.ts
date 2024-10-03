@@ -7,10 +7,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '',
       name: 'MainPage',
       component: MainLayout,
-
+      meta: {
+        title: 'Main Page'
+      },
       children: [...mainRoutes]
     },
     {
@@ -19,8 +21,21 @@ const router = createRouter({
       component: MicrositeLayout,
       props: true,
       children: [...microSitesRoutes]
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFoundPage',
+      component: () => import('@/components/NotFound.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (!to.matched.length) {
+    next({ name: 'NotFoundPage' })
+  } else {
+    next()
+  }
 })
 
 export default router

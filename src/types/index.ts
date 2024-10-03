@@ -1,10 +1,11 @@
-export interface NavbarItem {
+interface NavbarItem {
   id: number
   title: string
   path: string
+  name?: string
   children?: NavbarItem[]
 }
-export interface Branch {
+interface Branch {
   id: number
   slug: string
   title: string
@@ -13,8 +14,10 @@ export interface Branch {
   navbarItems: NavbarItem[]
   contentBlocks: ContentBlock[]
 }
-export interface ContentBlock {
+interface ContentBlock {
   id: number
   title: string
   body: string
 }
+
+export type { Branch, ContentBlock, NavbarItem }

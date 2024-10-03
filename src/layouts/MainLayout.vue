@@ -1,16 +1,11 @@
 <template>
-  <div>
-    <MainNavbar />
+  <div class="container">
     <main>
+      <MainNavbar />
       <section>
-        <center>
-          <h1>MAIN LAYOUT</h1>
-          <!-- <RouterView /> -->
-        </center>
+        <RouterView />
       </section>
     </main>
-
-    <!-- <Footer /> -->
   </div>
 </template>
 <script lang="ts" setup>
